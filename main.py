@@ -1,13 +1,14 @@
 import tkinter as tk
 from tkinter import filedialog
 import other
+other.check_for_updates()
 class SkipIDE:
     def __init__(self, master):
         self.master = master
         self.master.title("SkipIDE 0.1")
         self.text_area = tk.Text(self.master)
         self.text_area.pack(fill="both", expand=True)
-
+   
         # Menu bar
         menu_bar = tk.Menu(self.master)
         self.master.config(menu=menu_bar)
@@ -24,6 +25,7 @@ class SkipIDE:
         # Other options
         other_menu = tk.Menu(menu_bar, tearoff=0)
         other_menu.add_command(label="Check for Updates", command=other.check_for_updates)
+        other_menu.add_command(label="Changelog", command=other.changelog)
         menu_bar.add_cascade(label="Others", menu=other_menu)
 
         # Keyboard shortcuts
@@ -75,6 +77,7 @@ class SkipIDE:
 
     def quit(self):
         self.master.quit()
+
 
 if __name__ == '__main__':
     root = tk.Tk()
